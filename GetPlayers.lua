@@ -1,6 +1,7 @@
 local G = {}
-local Players = Game:GetService("Players")
+local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
+
 function G:getPlayers(txt)
     local tl = txt:lower()
     local found = {}
@@ -9,7 +10,9 @@ function G:getPlayers(txt)
         table.insert(found, Players.LocalPlayer)
     elseif tl == "random" then
         local players = Players:GetPlayers()
-        table.insert(found, players[math.random(1, #players)])
+        if #players > 0 then
+            table.insert(found, players[math.random(1, #players)])
+        end
     elseif tl == "others" then
         for _, v in pairs(Players:GetPlayers()) do
             if v ~= plr then table.insert(found, v) end
