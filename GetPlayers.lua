@@ -1,6 +1,6 @@
 local G = {}
 local Players = Game:GetService("Players")
-
+local plr = Players.LocalPlayer
 function G:getPlayers(txt)
     local tl = txt:lower()
     local found = {}
