@@ -3,6 +3,9 @@ local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
 
 function G:getPlayers(txt)
+    -- Remove trailing spaces
+    txt = txt:gsub("%s+$", "") -- This line removes trailing spaces from the string
+
     local tl = txt:lower()
     local found = {}
 
