@@ -743,9 +743,13 @@ function Library:CreateTab(name)
             end)
         
             UserInputService.InputChanged:Connect(function(input)
-                if SliderDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+                if SliderDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
                     Sliding(input)
                 end
+            end)
+            
+	    CircleSelector.TouchEnded:Connect(function()
+                SliderDragging = false
             end)
 
             local function SetSliderValue(value)
