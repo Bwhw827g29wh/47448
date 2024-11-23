@@ -606,7 +606,7 @@ function Library:CreateTab(name)
             local Title = Instance.new("TextLabel")
             local SliderBackground = Instance.new("ImageLabel")
             local SliderIndicator = Instance.new("ImageLabel")
-            local CircleSelector = Instance.new("ImageLabel")
+            local CircleSelector = Instance.new("ImageButton")
             local SliderValue = Instance.new("ImageLabel")
             local Value = Instance.new("TextBox")
 
