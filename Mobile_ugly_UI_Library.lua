@@ -606,7 +606,7 @@ function Library:CreateTab(name)
             local Title = Instance.new("TextLabel")
             local SliderBackground = Instance.new("ImageLabel")
             local SliderIndicator = Instance.new("ImageLabel")
-            local CircleSelector = Instance.new("ImageButton")
+            local CircleSelector = Instance.new("ImageLabel")
             local SliderValue = Instance.new("ImageLabel")
             local Value = Instance.new("TextBox")
 
@@ -746,10 +746,6 @@ function Library:CreateTab(name)
                 if SliderDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
                     Sliding(input)
                 end
-            end)
-            
-	    CircleSelector.TouchEnded:Connect(function()
-                SliderDragging = false
             end)
 
             local function SetSliderValue(value)
