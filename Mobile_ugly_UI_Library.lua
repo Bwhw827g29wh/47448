@@ -743,7 +743,7 @@ function Library:CreateTab(name)
             end)
         
             UserInputService.InputChanged:Connect(function(input)
-                if SliderDragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                if SliderDragging and input.UserInputType == Enum.UserInputType.MouseMovement then
                     Sliding(input)
                 end
             end)
