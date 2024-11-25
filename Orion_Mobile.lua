@@ -114,7 +114,7 @@ local function MakeDraggable(DragPoint, Main)
 			end
 		end)
 		AddConnection(DragPoint.InputChanged, function(Input)
-			if Input.UserInputType == Enum.UserInputType.MouseMovement then
+			if Input.UserInputType == Enum.UserInputType.MouseMovement or Enum.UserInputType.Touch then
 				DragInput = Input
 			end
 		end)
@@ -1066,7 +1066,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				end)
 
 				UserInputService.InputChanged:Connect(function(Input)
-					if Dragging and Input.UserInputType == Enum.UserInputType.MouseMovement then 
+					if Dragging and Input.UserInputType == Enum.UserInputType.MouseMovement or Enum.UserInputType.Touch then 
 						local SizeScale = math.clamp((Input.Position.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
 						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
 						SaveCfg(game.GameId)
