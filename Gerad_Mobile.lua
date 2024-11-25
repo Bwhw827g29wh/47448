@@ -879,7 +879,7 @@ function library:CreateWindow(Name)
 				ClipsDescendants = true;
 				--Position = UDim2.new(0.502301931, 0, 0.454545468, 0);
 				Size = UDim2.new(1, 0, 0, 40);
-				ZIndex = 3;
+				ZIndex = 4;
 				Font = Enum.Font.GothamSemibold;
 				LineHeight = 2.000;
 				Text = "";
