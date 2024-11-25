@@ -1122,7 +1122,7 @@ function library:CreateWindow(Name)
 				end
 			end
 
-			DropdownButton.MouseButton1Click:Connect(function()
+			DropdownBackground.MouseButton1Click:Connect(function()
 				ToggleDropdown()
 			end)	
 
