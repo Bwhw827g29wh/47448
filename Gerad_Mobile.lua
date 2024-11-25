@@ -869,7 +869,7 @@ function library:CreateWindow(Name)
 				BackgroundTransparency = 1.000;
 				Position = UDim2.new(0, 0, 0.293107003, 0);
 				Size = UDim2.new(1, 0, 0, 40);
-			}); --[[
+			});
 			local DropdownButton = library:Create("TextButton",{ -- DROPDOWN TOGGLE
 				Name = "Dropdown Button";
 				Parent = Dropdown;
@@ -877,6 +877,7 @@ function library:CreateWindow(Name)
 				BackgroundTransparency = 1.000;
 				BorderSizePixel = 0;
 				ClipsDescendants = true;
+				Position = UDim2.new(0.502301931, 0, 0.454545468, 0);
 				Size = UDim2.new(1, 0, 0, 40);
 				ZIndex = 3;
 				Font = Enum.Font.GothamSemibold;
@@ -885,10 +886,10 @@ function library:CreateWindow(Name)
 				TextColor3 = Color3.fromRGB(0, 0, 0);
 				TextSize = 14.000;
 				TextXAlignment = Enum.TextXAlignment.Left;
-			}); ]]
-			local DropdownBackground = library:Create("ImageButton",{
+			}); 
+			local DropdownBackground = library:Create("ImageLabel",{
 				Name = "Dropdown Background";
-				Parent = Dropdown;
+				Parent = DropdownButton;
 				Active = true;
 				AnchorPoint = Vector2.new(0.5, 0.5);
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255);
@@ -1122,7 +1123,7 @@ function library:CreateWindow(Name)
 				end
 			end
 
-			DropdownBackground.MouseButton1Click:Connect(function()
+			DropdownButton.MouseButton1Click:Connect(function()
 				ToggleDropdown()
 			end)	
 
