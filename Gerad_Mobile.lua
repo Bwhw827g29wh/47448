@@ -877,7 +877,7 @@ function library:CreateWindow(Name)
 				BackgroundTransparency = 1.000;
 				BorderSizePixel = 0;
 				ClipsDescendants = true;
-				Position = UDim2.new(0.502301931, 0, 0.454545468, 0);
+				--Position = UDim2.new(0.502301931, 0, 0.454545468, 0);
 				Size = UDim2.new(1, 0, 0, 40);
 				ZIndex = 3;
 				Font = Enum.Font.GothamSemibold;
@@ -896,7 +896,7 @@ function library:CreateWindow(Name)
 				BackgroundTransparency = 1.000;
 				BorderSizePixel = 0;
 				Position = UDim2.new(0.502301931, 0, 0.454545468, 0);
-				Selectable = true;
+				--Selectable = true;
 				Size = UDim2.new(0.905082345, 0, 0.909090936, 0);
 				ZIndex = 3;
 				Image = "rbxassetid://3570695787";
