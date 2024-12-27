@@ -38,12 +38,8 @@ if not Success then
 	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
 end	
 
-local function GetIcon(IconName)
-	if Icons[IconName] ~= nil then
-		return Icons[IconName]
-	else
-		return nil
-	end
+local function GetIcon(i)
+	return i
 end   
 
 local Orion = Instance.new("ScreenGui")
