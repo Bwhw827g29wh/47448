@@ -25,7 +25,17 @@ DraggableButton.BackgroundTransparency = 0 -- Make background transparent
 DraggableButton.Parent = ScreenGui
 DraggableButton.Position = UDim2.new(0.5, -DraggableButton.Size.X.Offset/2, 0.5, -DraggableButton.Size.Y.Offset/2)
 DraggableButton.BackgroundColor3 = Color3.new(0,0,255)
+DraggableButton.ResampleMode = Enum.ResamplerMode.Pixelated -- Set the ResampleMode to Pixelated
 
+local UIStroke = Instance.new("UIStroke")
+UIStroke.Thickness= 2
+UIStroke.Color = Color3.fromRGB(0, 170, 255)
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim2.new(100, 100)
+
+UIStroke.Parent = DraggableButton
+UICorner.Parent = DraggableButton
 local function makeDraggable(button)
     local dragging = false
     local dragStart = nil
