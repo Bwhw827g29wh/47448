@@ -32,7 +32,7 @@ UIStroke.Thickness= 2
 UIStroke.Color = Color3.fromRGB(0, 170, 255)
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim2.new(100, 100)
+UICorner.CornerRadius = UDim.new(100, 100)
 
 UIStroke.Parent = DraggableButton
 UICorner.Parent = DraggableButton
