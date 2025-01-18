@@ -1,4 +1,61 @@
+function randomString()
+	local length = math.random(10,20)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
 
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+
+local ScreenGui = Instance.new("ScreenGui")
+local DraggableButton = Instance.new("ImageButton")
+
+ScreenGui.Name = randomString()
+ScreenGui.Parent = CoreGui
+ 
+DraggableButton.Name = randomString()
+DraggableButton.Size = UDim2.new(0, 50, 0, 50) -- Square size
+DraggableButton.Position = UDim2.new(0.5, -50, 1, -110) -- Centered at the bottom
+DraggableButton.Image = "rbxassetid://138452915293145"
+DraggableButton.BackgroundTransparency = 0.9 -- Make background transparent
+DraggableButton.Parent = ScreenGui
+DraggableButton.Position = UDim2.new(0.5, -DraggableButton.Size.X.Offset/2, 0.5, -DraggableButton.Size.Y.Offset/2)
+DraggableButton.BackgroundColor3 = Color3.new(0,0,255)
+
+local function makeDraggable(button)
+    local dragging = false
+    local dragStart = nil
+    local startPos = nil
+
+    button.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = button.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    button.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            if dragging then
+                local delta = input.Position - dragStart
+                button.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+            end
+        end
+    end)
+end
+
+makeDraggable(DraggableButton)
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -643,7 +700,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 	MakeDraggable(DragPoint, MainWindow)
 
-	AddConnection(CloseBtn.MouseButton1Up, function()
+	AddConnection(CloseBtn.MouseButton1Click, function()
 		MainWindow.Visible = false
 		UIHidden = true
 		OrionLib:MakeNotification({
@@ -660,7 +717,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		end
 	end)
 
-	AddConnection(MinimizeBtn.MouseButton1Up, function()
+	AddConnection(MinimizeBtn.MouseButton1Click, function()
 		if Minimized then
 			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, 615, 0, 344)}):Play()
 			MinimizeBtn.Ico.Image = "rbxassetid://7072719338"
@@ -1758,5 +1815,15 @@ end
 function OrionLib:Destroy()
 	Orion:Destroy()
 end
-
+DraggableButton.MouseButton1Click:Connect(function ()
+MainWindow.Visible = not MainWindow.Visible
+				if MainWindow.Visible then
+		UIHidden = true
+				else
+UIHidden = false
+				end
+		
+		WindowConfig.CloseCallback()
+			end)
+		
 return OrionLib
