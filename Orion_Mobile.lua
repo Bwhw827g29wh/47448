@@ -95,8 +95,12 @@ if not Success then
 	warn("\nOrion Library - Failed to load Feather Icons. Error code: " .. Response .. "\n")
 end	
 
-local function GetIcon(i)
-	return i
+local function GetIcon(IconName)
+	if Icons[IconName] ~= nil then
+		return Icons[IconName]
+	else
+		return nil
+	end
 end   
 
 local Orion = Instance.new("ScreenGui")
@@ -699,7 +703,16 @@ function OrionLib:MakeWindow(WindowConfig)
 	end	
 
 	MakeDraggable(DragPoint, MainWindow)
-
+         DraggableButton.MouseButton1Click:Connect(function ()
+MainWindow.Visible = not MainWindow.Visible
+				if MainWindow.Visible then
+		UIHidden = true
+				else
+UIHidden = false
+				end
+		
+		WindowConfig.CloseCallback()
+			end)
 	AddConnection(CloseBtn.MouseButton1Click, function()
 		MainWindow.Visible = false
 		UIHidden = true
@@ -1815,15 +1828,5 @@ end
 function OrionLib:Destroy()
 	Orion:Destroy()
 end
-DraggableButton.MouseButton1Click:Connect(function ()
-MainWindow.Visible = not MainWindow.Visible
-				if MainWindow.Visible then
-		UIHidden = true
-				else
-UIHidden = false
-				end
-		
-		WindowConfig.CloseCallback()
-			end)
 		
 return OrionLib
