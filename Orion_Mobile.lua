@@ -13,10 +13,11 @@ local CoreGui = game:GetService("CoreGui")
 
 local ScreenGui = Instance.new("ScreenGui")
 local DraggableButton = Instance.new("ImageButton")
-
+local yoww = Instance.new("BoolValue", ScreenGui)
 ScreenGui.Name = randomString()
 ScreenGui.Parent = CoreGui
- 
+
+yoww.Name = "gaow8iwhsbh"
 DraggableButton.Name = randomString()
 DraggableButton.Size = UDim2.new(0, 50, 0, 50) -- Square size
 DraggableButton.Position = UDim2.new(0.5, -50, 1, -110) -- Centered at the bottom
