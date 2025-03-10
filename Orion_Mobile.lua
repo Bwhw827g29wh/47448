@@ -7,6 +7,12 @@ function randomString()
 	return table.concat(array)
 end
 
+for i,v in pairs(game.CoreGui:GetDescendants()) do
+    if v.Name == "gaow8iwhsbh" then
+    v.Parent:Destroy()
+end
+end
+
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
