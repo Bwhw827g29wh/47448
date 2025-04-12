@@ -1845,5 +1845,17 @@ end
 function OrionLib:Destroy()
 	Orion:Destroy()
 end
+
+function OrionLib:GGHbut(bool)
+if bool then
+for i,v in pairs(game.CoreGui:GetDescendants()) do
+    if v.Name == "gaow8iwhsbh" then
+    v.Parent:Destroy()
+end
+end
+			else
+				
+			end
+		end
 		
 return OrionLib
