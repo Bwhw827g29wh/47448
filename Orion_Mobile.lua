@@ -1850,11 +1850,15 @@ function OrionLib:GGHbut(bool)
 if bool then
 for i,v in pairs(game.CoreGui:GetDescendants()) do
     if v.Name == "gaow8iwhsbh" then
-    v.Parent:Destroy()
+    v.Parent.Enabled = true
 end
 end
 			else
-				
+				for i,v in pairs(game.CoreGui:GetDescendants()) do
+    if v.Name == "gaow8iwhsbh" then
+    v.Parent.Enabled = false
+end
+end
 			end
 		end
 		
