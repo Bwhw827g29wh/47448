@@ -929,7 +929,7 @@ function dropFunctions:SetMultiSelect(enabled)
         for _, child in pairs(DropdownFrame:GetChildren()) do
             if child:IsA("TextButton") then
                 animateIn(child, {BackgroundColor3 = currentTheme.primary}, 0.2)
-                if child.selectionGradient then
+                if child:FindFirstChild("selectionGradient") then
                     child.selectionGradient:Destroy()
                     child.selectionGradient = nil
                 end
