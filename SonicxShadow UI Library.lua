@@ -130,6 +130,9 @@ end
 
 local TurtleUiLib = Instance.new("ScreenGui")
 TurtleUiLib.Name = "GGHUiLib"
+TurtleUiLib.DisplayOrder = 1
+TurtleUiLib.ScreenInsets = Enum.ScreenInsets.CoreUISafeInsets
+TurtleUiLib.SafeAreaCompatibility = Enum.SafeAreaCompatibility.FullscreenExtension
 protect_gui(TurtleUiLib)
 
 local xOffset = 20
@@ -176,7 +179,16 @@ function library:Window(name, themeName)
     UiWindow.ZIndex = 1
     UiWindow.Active = true
     UiWindow.ClipsDescendants = false
-    Dragify(UiWindow)
+    
+    local c = UiWindow:Clone()
+    c.Parent = TurtleUiLib
+    c.Size = UDim2.new(0, 207, 0, 26)
+    c.BackgroundTransparency = 1
+    c.ZIndex = 9181
+    Dragify(c)
+    UiWindow.Parent = c
+    UiWindow.Position = UDim2.new(0, 0, 0, 0)
+    
 
     -- Animate window in
     UiWindow.Size = UDim2.new(0, 0, 0, 33)
@@ -756,7 +768,10 @@ end)
         -- animateIn(Dropdown, {BackgroundColor3 = currentTheme.primary}, 0.2)
     end)
 
+    local db = false
     Dropdown.MouseButton1Click:Connect(function()
+        if db then return end
+        db = true
     --[[ for i, v in pairs(dropdowns) do
         if v ~= DropdownFrame then
             -- Close other dropdowns and move content back
@@ -805,6 +820,7 @@ end)
     -- sizes[winCount] = sizes[winCount] + maxDropHeight
     updateWindowSize()
 end
+db = false
 end)
     
     function dropFunctions:Button(name, isSelected)
