@@ -255,11 +255,11 @@ function library:Window(name, themeName)
         -- Show animation
         Window.Visible = true
         Minimise.Text = "--"
-        local targetHeight = math.min(sizes[winCount] + 10, maxWindowHeight)
+        local targetHeight = math.min(sizes[winCount], maxWindowHeight)
         Window.Size = UDim2.new(0, 207, 0, 0) -- Start from 0
         animateOut(UiWindow, {Size = UDim2.new(0, 207, 0, targetHeight + 33)}, 0.3) -- Update container
         Header.Size = UDim2.new(0, 207, 0, 26)
-        animateOut(Window, {Size = UDim2.new(0, 207, 0, maxWindowHeight)}, 0.3)
+        animateOut(Window, {Size = UDim2.new(0, 207, 0, targetHeight)}, 0.3)
     end
 end)
 
@@ -1390,23 +1390,6 @@ end
 local ShadowWindow = library:Window("Shadow Hub", "Shadow")
 local SonicWindow = library:Window("Sonic Hub", "Sonic")
 
-local singleDropdown 
-ShadowWindow:Button("print", function()
-    print(singleDropdown:GetSelected())
-end)
-
-ShadowWindow:Toggle("switch", false, function(bool)
-    singleDropdown:SetMultiSelect(bool)
-end)
-
-ShadowWindow:ColorPicker("Color Picker", Color3.fromRGB(255, 255, 255), function(color)
-   print(color)
-end)
-
-ShadowWindow:Slider("Example Slider",0,100,20, function(value)
-   print(value)
-end)
-
 ShadowWindow:Box("Walkspeed", function(text, focuslost)
    if focuslost then
    print(text)
@@ -1476,4 +1459,5 @@ SonicWindow:Label("Made by: Shadow The Hedgehog", true) -- Rainbow text
 
 SonicWindow:Label("Gotta go fast!", Color3.fromRGB(0, 100, 200))
 ]]
+
 return library
