@@ -375,7 +375,7 @@ Button.MouseLeave:Connect(function()
     -- animateIn(Button, {BackgroundColor3 = currentTheme.primary}, 0.2)
 end)
 
-Button.MouseButton1Down:Connect(function()
+Button.MouseButton1Click:Connect(function()
     --[[ animateOut(Button, {BackgroundColor3 = currentTheme.accent}, 0.1).Completed:Connect(function()
         animateIn(Button, {BackgroundColor3 = currentTheme.primary}, 0.1)
     end) ]]
