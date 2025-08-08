@@ -362,6 +362,7 @@ updateWindowSize()
         Button.TextSize = 16.000
         Button.TextStrokeTransparency = 123.000
         Button.TextWrapped = true
+        Button.TextScaled = true
         Button.Text = name
         Button.AutoButtonColor = false
         
